@@ -27,6 +27,11 @@ RUN conda install --yes numpy pandas scikit-learn scikit-image matplotlib scipy 
 
 # Now for a python2 environment
 RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 ipython numpy pandas scikit-learn scikit-image matplotlib scipy seaborn sympy cython patsy statsmodels cloudpickle dill numba bokeh && conda clean -yt
+
+# install the Earth Engine package and dependencies
+RUN conda install -y -n python2 --channel bcbio oauth2client
+RUN conda install -y -n python2 --channel tylerickson --channel pandas earthengine-api
+
 RUN $CONDA_DIR/envs/python2/bin/python $CONDA_DIR/envs/python2/bin/ipython kernelspec install-self --user
 
 # Extra Kernels
