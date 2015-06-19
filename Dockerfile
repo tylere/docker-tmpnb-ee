@@ -38,7 +38,8 @@ RUN $CONDA_DIR/envs/python2/bin/python $CONDA_DIR/envs/python2/bin/ipython kerne
 RUN pip install --user bash_kernel
 
 # Featured notebooks
-RUN git clone --depth 1 https://github.com/jvns/pandas-cookbook.git /home/jovyan/featured/pandas-cookbook/
+#RUN git clone --depth 1 https://github.com/jvns/pandas-cookbook.git /home/jovyan/featured/pandas-cookbook/
+RUN git clone https://github.com/ipython/ipython/tree/master/examples /home/jovyan/featured/ipython-examples/
 
 # Convert notebooks to the current format
 RUN find . -name '*.ipynb' -exec ipython nbconvert --to notebook {} --output {} \;
