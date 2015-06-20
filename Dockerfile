@@ -1,4 +1,5 @@
 # Docker image for a tmpnb server, used to teach the EE Python API
+# v001
 
 FROM jupyter/minimal
 
