@@ -1,5 +1,5 @@
 # Docker image for a tmpnb server, used to teach the EE Python API
-# v001
+# v002
 
 FROM jupyter/minimal
 
@@ -36,7 +36,7 @@ RUN conda install -y -n python2 --channel tylerickson --channel pandas earthengi
 RUN $CONDA_DIR/envs/python2/bin/python $CONDA_DIR/envs/python2/bin/ipython kernelspec install-self --user
 
 # Extra Kernels
-RUN pip install --user bash_kernel
+#RUN pip install --user bash_kernel
 
 # Featured notebooks
 #RUN git clone --depth 1 https://github.com/jvns/pandas-cookbook.git /home/jovyan/featured/pandas-cookbook/
