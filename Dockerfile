@@ -1,5 +1,5 @@
 # Docker image for a tmpnb server, used to teach the EE Python API
-# v002
+# v004
 
 FROM jupyter/minimal
 
@@ -24,7 +24,7 @@ WORKDIR $HOME
 USER jovyan
 
 # Python packages
-RUN conda install --yes numpy pandas scikit-learn scikit-image matplotlib scipy seaborn sympy cython patsy statsmodels cloudpickle dill numba bokeh && conda clean -yt
+#RUN conda install --yes numpy pandas scikit-learn scikit-image matplotlib scipy seaborn sympy cython patsy statsmodels cloudpickle dill numba bokeh && conda clean -yt
 
 # Now for a python2 environment
 RUN conda create -p $CONDA_DIR/envs/python2 python=2.7 ipython numpy pandas scikit-learn scikit-image matplotlib scipy seaborn sympy cython patsy statsmodels cloudpickle dill numba bokeh && conda clean -yt
