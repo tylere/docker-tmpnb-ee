@@ -46,7 +46,6 @@ RUN ipython profile create
 
 USER root
 
-RUN mkdir /home/jovyan/communities && mkdir /home/jovyan/featured
 ADD notebooks/ /home/jovyan/
 #ADD datasets/ /home/jovyan/datasets/
 RUN chown -R jovyan:jovyan /home/jovyan
@@ -71,6 +70,7 @@ RUN $CONDA_DIR/envs/python2/bin/python $CONDA_DIR/envs/python2/bin/ipython kerne
 RUN pip install --user bash_kernel
 
 # Featured notebooks
+##RUN mkdir /home/jovyan/featured
 #RUN git clone --depth 1 https://github.com/jvns/pandas-cookbook.git /home/jovyan/featured/pandas-cookbook/
 #RUN git clone --depth 1 https://github.com/ipython/ipython.git /home/jovyan/featured/ipython-examples/
 
