@@ -32,7 +32,14 @@ RUN chown jovyan:jovyan /home/jovyan -R
 USER jovyan
 
 # Expose our custom setup to the installed ipython (for mounting by nginx)
+RUN mkdir --parents /opt/conda/lib/python3.4/site-packages/IPython/html/static/custom
 RUN cp /home/jovyan/.ipython/profile_default/static/custom/* /opt/conda/lib/python3.4/site-packages/IPython/html/static/custom/
+
+ENV HOME /home/jovyan
+ENV SHELL /bin/bash
+ENV USER jovyan
+ENV PATH $CONDA_DIR/bin:$CONDA_DIR/envs/python2/bin:$PATH
+WORKDIR $HOME
 
 RUN conda install --yes ipython-notebook terminado && conda clean -yt
 RUN ipython profile create
@@ -45,14 +52,6 @@ ADD notebooks/ /home/jovyan/
 RUN chown -R jovyan:jovyan /home/jovyan
 
 EXPOSE 8888
-
-USER jovyan
-
-ENV HOME /home/jovyan
-ENV SHELL /bin/bash
-ENV USER jovyan
-ENV PATH $CONDA_DIR/bin:$CONDA_DIR/envs/python2/bin:$PATH
-WORKDIR $HOME
 
 USER jovyan
 
